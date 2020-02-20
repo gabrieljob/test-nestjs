@@ -4,9 +4,7 @@ import { Task } from './shared/task';
 
 @Controller('tasks')
 export class TasksController {
-    constructor(private taskService: TaskService) {
-
-    }
+    constructor(private taskService: TaskService) {}
 
     @Get()
     async getAll(): Promise<Task[]> {
@@ -25,7 +23,6 @@ export class TasksController {
 
     @Put(':id')
     async update(@Param() params, @Body() task: Task): Promise<Task> {
-        task.id = params.id;
         return this.taskService.update(params, task);
     }
 
